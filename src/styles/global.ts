@@ -2,7 +2,16 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --background: #f0f2f5;
+    --background: #f7f3f7;
+    --white: #fff;
+
+    --gray-100: #f3f5f7;
+    --gray-600: #515252;
+
+    --purple-900: #642f87;
+    --pink-500: #b13d7c;
+
+    --gradient: linear-gradient(90deg, rgba(177,61,124,1) 50%, rgba(100,47,135,1) 100%);
   }
 
   html {
