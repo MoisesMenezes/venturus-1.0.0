@@ -30,6 +30,33 @@ export function TableTeam() {
               <MdEdit />
             </td>
           </tr>
+          <tr>
+            <td>Real Madrid</td>
+            <td>Real Madrid Squad</td>
+            <td>
+              <MdDelete />
+              <MdShare />
+              <MdEdit />
+            </td>
+          </tr>
+          <tr>
+            <td>Real Madrid</td>
+            <td>Real Madrid Squad</td>
+            <td>
+              <MdDelete />
+              <MdShare />
+              <MdEdit />
+            </td>
+          </tr>
+          <tr>
+            <td>Real Madrid</td>
+            <td>Real Madrid Squad</td>
+            <td>
+              <MdDelete />
+              <MdShare />
+              <MdEdit />
+            </td>
+          </tr>
         </tbody>
       </table>
     </Container>

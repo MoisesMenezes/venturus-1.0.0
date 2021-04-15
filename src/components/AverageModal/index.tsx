@@ -1,9 +1,13 @@
 import { Container, Content, Item } from "./styles";
 
-export function AverageModal(){
+interface AverageModalProps {
+  title: string;
+}
+
+export function AverageModal({ title }:AverageModalProps){
   return(
     <Container>
-      <h4>Highest avg age</h4>
+      <h4>{title}</h4>
       <Content>
         <Item>
           <p>Inter Milan</p>

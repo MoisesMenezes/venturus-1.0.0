@@ -8,9 +8,8 @@ export function ModalTop(){
         <h2>Top 5</h2>
       </Header>
       <ContainerAverage>
-      <AverageModal/>
-      <AverageModal/>
-
+      <AverageModal title="Highest avg age"/>
+      <AverageModal title="Lowest avg age"/>
       </ContainerAverage>
     </Container>
   )
