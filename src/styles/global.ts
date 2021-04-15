@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
     --pink-100: #f7eef7;
     --pink-500: #b13d7c;
+    --pink-300: #d97897;
 
     --gradient: linear-gradient(90deg, rgba(177,61,124,1) 50%, rgba(100,47,135,1) 100%);
     --gradiente-button: linear-gradient(0deg, rgba(177,61,124,1) 30%, rgba(133,62,180,1) 100%);
