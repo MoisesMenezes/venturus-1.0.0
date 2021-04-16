@@ -5,13 +5,13 @@ import {
   Form,
   ContainerInputs,
   ContainerTeam,
-  FormationField
+  FormationField,
 } from "./styles";
 import Header from "../../components/Header";
 import { PlayerCard } from "../../components/PlayerCard";
 
-
 export function CreateTeam() {
+
   return (
     <>
       <Header />
@@ -38,7 +38,7 @@ export function CreateTeam() {
               <div>
                 <ContainerInputs>
                   <label htmlFor="website">Team website</label>
-                  <input type="text"  name="website"/>
+                  <input type="text" name="website" />
                 </ContainerInputs>
 
                 <ContainerInputs>
@@ -78,16 +78,14 @@ export function CreateTeam() {
                     <option value="3-2-2-3">3-2-2-3</option>
                   </select>
                   <FormationField />
-                  <button type="submit">
-                    Save
-                  </button>
+                  <button type="submit">Save</button>
                 </ContainerInputs>
               </div>
 
               <div>
                 <ContainerInputs>
                   <label htmlFor="search-player">Search Players</label>
-                  <input  type="search" name="search-player"/>
+                  <input type="search" name="search-player" />
                 </ContainerInputs>
 
                 <PlayerCard />

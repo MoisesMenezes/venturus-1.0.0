@@ -1,62 +1,90 @@
 import { Container } from "./styles";
 import { MdEdit, MdDelete, MdShare } from "react-icons/md";
+import { FaSort } from "react-icons/fa";
+
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+
+interface TeamProps {
+  id: number;
+  name: string;
+  description: string;
+  website: string;
+  type: string;
+  tags: string[];
+}
 
 export function TableTeam() {
+  const [teams, setTeams] = useState<TeamProps[]>([]);
+  const [sortAsc, setSortAsc] = useState("asc");
+
+  useEffect(() => {
+    api.get("teams").then((response) => setTeams(response.data.teams));
+  }, []);
+
+  const sortBy = (key: any) => {
+    switch (key) {
+      case "name": {
+        const sortTeam = teams.sort((a, b) => {
+          const isReversed = sortAsc === "asc" ? 1 : -1;
+
+          if (isReversed === 1) {
+            setSortAsc("desc");
+          } else {
+            setSortAsc("asc");
+          }
+          return isReversed * a.name.localeCompare(b.name);
+        });
+
+        setTeams([...sortTeam]);
+        break;
+      }
+      case "description": {
+        const sortTeam = teams.sort((a, b) => {
+          const isReversed = sortAsc === "asc" ? 1 : -1;
+
+          if (isReversed === 1) {
+            setSortAsc("desc");
+          } else {
+            setSortAsc("asc");
+          }
+          return isReversed * a.description.localeCompare(b.description);
+        });
+        setTeams([...sortTeam]);
+        break;
+      }
+
+      default:
+        break;
+    }
+  };
+
   return (
     <Container>
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
+            <th onClick={() => sortBy("name")}>
+              Name
+              <FaSort />
+            </th>
+            <th onClick={() => sortBy("description")}>
+              Description <FaSort />
+            </th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Barcenola</td>
-            <td>Barcelona Squad</td>
-            <td>
-              <MdDelete />
-              <MdShare />
-              <MdEdit />
-            </td>
-          </tr>
-          <tr>
-            <td>Real Madrid</td>
-            <td>Real Madrid Squad</td>
-            <td>
-              <MdDelete />
-              <MdShare />
-              <MdEdit />
-            </td>
-          </tr>
-          <tr>
-            <td>Real Madrid</td>
-            <td>Real Madrid Squad</td>
-            <td>
-              <MdDelete />
-              <MdShare />
-              <MdEdit />
-            </td>
-          </tr>
-          <tr>
-            <td>Real Madrid</td>
-            <td>Real Madrid Squad</td>
-            <td>
-              <MdDelete />
-              <MdShare />
-              <MdEdit />
-            </td>
-          </tr>
-          <tr>
-            <td>Real Madrid</td>
-            <td>Real Madrid Squad</td>
-            <td>
-              <MdDelete />
-              <MdShare />
-              <MdEdit />
-            </td>
-          </tr>
+          {teams.map((team) => (
+            <tr key={team.id}>
+              <td>{team.name}</td>
+              <td>{team.description}</td>
+              <td>
+                <MdDelete />
+                <MdShare />
+                <MdEdit />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>
