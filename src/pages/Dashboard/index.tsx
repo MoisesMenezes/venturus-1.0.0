@@ -4,7 +4,7 @@ import { ModalTop } from "../../components/ModalTop";
 import { PickedPlayer } from "../../components/PickedPlayer";
 import { Container } from "./styles";
 
-export function Dashboard() {
+function Dashboard() {
   return (
     <>
       <Header />
@@ -16,3 +16,5 @@ export function Dashboard() {
     </>
   );
 }
+
+export default Dashboard;

@@ -1,6 +1,7 @@
 import { Container, Header } from "./styles";
 import { MdAdd} from "react-icons/md";
 import { TableTeam } from "../TableTeam";
+import {Link} from "react-router-dom";
 
 export function ModalTeam(){
   return (
@@ -8,7 +9,9 @@ export function ModalTeam(){
       <Header>
       <h2>My Teams</h2>
       <button>
-        <MdAdd size={28} color="#fff" />
+        <Link to="/teamcreate">
+          <MdAdd size={28} color="#fff" />
+        </Link>
       </button>
       </Header>
       <TableTeam />

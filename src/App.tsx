@@ -1,7 +1,7 @@
-import { CreateTeam } from "./pages/CreateTeam";
-import { Dashboard } from "./pages/Dashboard";
 import { GlobalStyle } from "./styles/global";
 import { createServer, Model } from "miragejs";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./routes";
 
 createServer({
   models: {
@@ -54,10 +54,10 @@ createServer({
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
+      <Routes />
       <GlobalStyle />
-      <Dashboard />
-    </>
+    </BrowserRouter>
   );
 }
 
