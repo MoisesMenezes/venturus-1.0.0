@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import bgFootbal from "../../assets/bgfootballx.png";
 
 export const Container = styled.div`
     padding: 2rem;
@@ -62,38 +63,22 @@ export const ContainerTeam = styled.div`
 
   button {
     background: var(--gradient);
+    border: transparent;
     color: var(--white);
     font-weight: bold;
-    border: transparent;
     height: 2.5rem;
-
     margin: 1rem 0;
   }
 `;
 
 export const FormationField = styled.div`
-  background: var(--gradiente-button);
-  position: relative;
-  min-height: 500px;
-  margin-top: 1.5rem;
-
-  &::after{
-    content: "";
-    position: absolute;
-    height: 1px;
-    width: 100%;
-    background: var(--gray-300);
-    top: 50%;
-  }
-
-  &::before{
-    content: "";
-    position: absolute;
-    height: 100px;
-    border-radius: 50%;
-    border: 1px solid var(--gray-300);
-    width: 100px;
-    right: 39%;
-    top: 200px;
-  }
+  align-self: center;
+  background-image: url('${bgFootbal}'), var(--gradient-horizontal);
+  border-radius: 1.5rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 40rem;
+  margin-top: 2rem;
+  width: 25rem;
 `;

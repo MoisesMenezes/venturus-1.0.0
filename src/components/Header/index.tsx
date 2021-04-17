@@ -7,13 +7,13 @@ export default function Header(){
       <Content>
         <Logo>
           <img src={logo} alt="logo" />
-          <h2>Squad Management Tool</h2>
+          <h4>Squad Management Tool</h4>
         </Logo>
 
         <Avatar>
-          <p>John Doe</p>
+          <p>Moisés Menezes</p>
           <div>
-            <strong>JD</strong>
+            <strong>MM</strong>
           </div>
         </Avatar>
       </Content>

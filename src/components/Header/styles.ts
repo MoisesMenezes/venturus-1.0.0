@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.header`
   margin: 0 auto;
-  height: 5rem;
+  height: 4rem;
   background: var(--gradient);
 `;
 
 export const Content = styled.div`
   display: flex;
   align-items: center;
-  padding: 1rem 2.5rem;
+  padding: 0.5rem 2rem;
   justify-content: space-between;
   color: var(--white);
 `;
@@ -19,10 +19,10 @@ export const Logo = styled.div`
   align-items: center;
 
 img {
-    width: 50px;
+    width: 45px;
   }
 
-  h2 {
+  h4 {
     padding-left: 0.8rem;
   }
 `;

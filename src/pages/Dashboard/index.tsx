@@ -10,8 +10,10 @@ function Dashboard() {
       <Header />
       <Container>
         <ModalTeam />
-        <ModalTop/>
-        <PickedPlayer />
+        <div>
+          <ModalTop />
+          <PickedPlayer />
+        </div>
       </Container>
     </>
   );

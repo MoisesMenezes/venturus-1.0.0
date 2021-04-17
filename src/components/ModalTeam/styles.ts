@@ -2,15 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background: var(--white);
-  /* height: 500px;
-  width:  500px; */
   width: 100%;
   border-radius: 1rem;
 `;
 
 export const Header = styled.header`
   display: flex;
-  padding: 2rem 3rem;
+  padding: 2rem 2rem;
   border-bottom: 1px solid var(--gray-300);
   justify-content: space-between;
 
@@ -19,20 +17,21 @@ export const Header = styled.header`
   }
 
   button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     background: var(--gradiente-button);
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     border-color: transparent;
-    border-radius: 20%;
+    border-radius: 25%;
 
     transition: filter 0.2s;
 
     &:hover {
       filter: brightness(0.9);
+    }
+
+    a {
+      display: flex;
+      justify-content: center;
     }
   }
 `;
