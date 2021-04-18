@@ -27,20 +27,13 @@ createServer({
           type: "real",
           tags: ["BR", "PTW"],
         },
-        {
-          id: 3,
-          name: "COCA COLA",
-          description: "aaa",
-          website: "https:teste.com",
-          type: "real",
-          tags: ["BR", "PTW"],
-        },
       ],
     });
   },
 
   routes() {
     this.namespace = "api";
+
     this.get("/teams", () => {
       return this.schema.all("teams");
     });
@@ -49,6 +42,8 @@ createServer({
       const data = JSON.parse(request.requestBody);
       return schema.create("teams", data);
     });
+
+    this.passthrough("https://api-football-v1.p.rapidapi.com/**");
   },
 });
 

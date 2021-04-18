@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
 
     --gray-100: #f3f5f7;
     --gray-300: #eeeeee;
+    --gray-400: #CDCDCD;
     --gray-600: #515252;
     
 
@@ -15,6 +16,9 @@ export const GlobalStyle = createGlobalStyle`
     --pink-100: #f7eef7;
     --pink-500: #b13d7c;
     --pink-300: #d97897;
+    --pink-800: #f1295b;
+
+    --red-500: #D54749;
 
     --gradient-horizontal: linear-gradient(180deg, #bf34b1 0%, #532d8c 100%);
     --gradient: linear-gradient(90deg, rgb(242, 41, 91) 0%, rgb(83, 45, 140) 100%);

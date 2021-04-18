@@ -9,8 +9,60 @@ import {
 } from "./styles";
 import Header from "../../components/Header";
 import { PlayerCard } from "../../components/PlayerCard";
+import { useFormik } from "formik";
+import { api } from "../../services/api";
+import { useHistory } from "react-router-dom";
+import { isValidURL } from "../../utils/validateURL";
+
+import getPlayers from "../../services/apiFootbal";
+
+
+interface formProps {
+  name: string;
+  description: string;
+  website: string;
+}
 
 export function CreateTeam() {
+  let history = useHistory();
+
+
+  const teste = async () => {
+
+    const teste = await getPlayers("cristiano");
+
+    console.log("AAAAAAA",teste)
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      description: "",
+      website: "",
+    },
+    onSubmit: async (values) => {
+      try {
+        await api.post("teams", values);
+        history.push("/");
+      } catch (error) {
+        console.log("error when adding a team");
+      }
+    },
+    validate: (values) => {
+      let errors: formProps = {} as formProps;
+
+      if (!values.name) errors.name = "Name Required";
+      if (!values.website) {
+        errors.website = "Website Required";
+      } else if (!isValidURL(values.website)) {
+        errors.website = "Website not valid";
+      }
+
+      return errors;
+    },
+  });
+
+  console.log("FORM ERRORS", formik.errors);
 
   return (
     <>
@@ -20,42 +72,74 @@ export function CreateTeam() {
           <HeaderTeam>
             <h2>Create your team</h2>
           </HeaderTeam>
-          <Form>
+          <Form onSubmit={formik.handleSubmit}>
             <h3>TEAM INFORMATION</h3>
 
             <ContainerTeam>
               <div>
                 <ContainerInputs>
-                  <label htmlFor="team-name">Team Name</label>
-                  <input type="text" name="team-name"></input>
+                  <label htmlFor="name">Team Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name}
+                  ></input>
+                  {formik.touched.name && formik.errors.name ? (
+                    <div className="validate-input">{formik.errors.name}</div>
+                  ) : null}
                 </ContainerInputs>
 
                 <ContainerInputs>
                   <label htmlFor="description">Description</label>
-                  <textarea rows={4} cols={2} name="description" />
+                  <textarea
+                    rows={12}
+                    cols={1}
+                    name="description"
+                    id="description"
+                    onChange={formik.handleChange}
+                    value={formik.values.description}
+                  />
                 </ContainerInputs>
               </div>
               <div>
                 <ContainerInputs>
                   <label htmlFor="website">Team website</label>
-                  <input type="text" name="website" />
+                  <input
+                    type="text"
+                    name="website"
+                    id="website"
+                    onChange={formik.handleChange}
+                    value={formik.values.website}
+                    onBlur={formik.handleBlur}
+                  />
+                  {formik.touched.website && formik.errors.website ? (
+                    <div className="validate-input">
+                      {formik.errors.website}
+                    </div>
+                  ) : null}
                 </ContainerInputs>
 
                 <ContainerInputs>
                   <label>Team type</label>
 
                   <div className="radio-buttons">
-                    <input type="radio" name="fantasy" />
-                    <label htmlFor="fantasy">Fantasy</label>
-
-                    <input type="radio" name="real" />
-                    <label htmlFor="real">Real</label>
+                    <div>
+                      <input type="radio" name="type" id="fantasy" />
+                      <label htmlFor="fantasy">Fantasy</label>
+                    </div>
+                    <div>
+                      <input type="radio" name="type" id="real" />
+                      <label htmlFor="real">Real</label>
+                    </div>
                   </div>
                 </ContainerInputs>
 
                 <ContainerInputs>
                   <label htmlFor="tags">Tags</label>
-                  <textarea rows={4} cols={2} name="tags" />
+                  <textarea rows={6} cols={1} name="tags" id="tags" />
                 </ContainerInputs>
               </div>
             </ContainerTeam>
@@ -94,6 +178,7 @@ export function CreateTeam() {
             </ContainerTeam>
           </Form>
         </Modal>
+        <button onClick={teste}>OLA</button>
       </Container>
     </>
   );
