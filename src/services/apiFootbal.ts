@@ -5,7 +5,7 @@ interface PlayerResponse {
   age: number;
 }
 
-interface Player {
+export interface Player {
   name: string;
   nacionality: string;
   age: number;

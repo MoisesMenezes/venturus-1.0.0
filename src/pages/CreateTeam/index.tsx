@@ -15,6 +15,9 @@ import { useHistory } from "react-router-dom";
 import { isValidURL } from "../../utils/validateURL";
 
 import getPlayers from "../../services/apiFootbal";
+import { useEffect, useState } from "react";
+import { Player } from "../../services/apiFootbal";
+import { v4 } from "uuid";
 
 
 interface formProps {
@@ -23,8 +26,27 @@ interface formProps {
   website: string;
 }
 
+
 export function CreateTeam() {
   let history = useHistory();
+  const [searchPlayer, setSearchPlayer] = useState<string>("");
+  const [players, setPlayers ] = useState<Player[]>([]);
+
+
+  useEffect(() => {
+
+    async function LoadPlayers(){
+      if(searchPlayer.length > 3) {
+        const playersFound =  await getPlayers(searchPlayer);
+
+        setPlayers([]);
+        setPlayers(playersFound);
+      } else {
+        setPlayers([]);
+      }
+    }
+    LoadPlayers();
+  },[searchPlayer])
 
 
   const teste = async () => {
@@ -62,7 +84,6 @@ export function CreateTeam() {
     },
   });
 
-  console.log("FORM ERRORS", formik.errors);
 
   return (
     <>
@@ -169,16 +190,16 @@ export function CreateTeam() {
               <div>
                 <ContainerInputs>
                   <label htmlFor="search-player">Search Players</label>
-                  <input type="search" name="search-player" />
+                  <input type="text" name="search-player" value={searchPlayer} onChange={(event) => setSearchPlayer(event.currentTarget.value)}/>
                 </ContainerInputs>
-
-                <PlayerCard />
-                <PlayerCard />
+                {players.map((player) => (
+                  <PlayerCard key={`${player.name}-${v4()}`} age={player.age} nacionality={player.nacionality} name={player.name}/>
+                )
+                )}
               </div>
             </ContainerTeam>
           </Form>
         </Modal>
-        <button onClick={teste}>OLA</button>
       </Container>
     </>
   );
