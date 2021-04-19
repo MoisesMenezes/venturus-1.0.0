@@ -27,15 +27,17 @@ export function AverageModal() {
     teams.map((team) => {
       let avg = 0;
 
-      team.players.map((player) => {
-        return (avg = player.age + avg);
-      });
+      if (team.players) {
+        team.players.map((player) => {
+          return (avg = player.age + avg);
+        });
 
-      const avgAge = (avg / team.players.length).toFixed(1);
-      allTeams.push({
-        name: team.name,
-        avg: Number(avgAge),
-      });
+        const avgAge = (avg / team.players.length).toFixed(1);
+        allTeams.push({
+          name: team.name,
+          avg: Number(avgAge),
+        });
+      }
     });
 
     setAvgHighest([...allTeams].sort((a, b) => b.avg - a.avg).slice(0, 5));

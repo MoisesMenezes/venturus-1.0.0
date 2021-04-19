@@ -18,15 +18,27 @@ import getPlayers from "../../services/apiFootbal";
 import { useEffect, useState } from "react";
 import { Player } from "../../services/apiFootbal";
 import { v4 } from "uuid";
+import { useLocation } from "react-router-dom";
+import { TeamProps } from "../../types";
 
 interface formProps {
   name: string;
   description: string;
   website: string;
+  teamType: string;
 }
+
+let initialValues = {
+  name: "",
+  description: "",
+  website: "",
+  teamType: "",
+};
 
 export function CreateTeam() {
   let history = useHistory();
+  const location = useLocation();
+
   const [searchPlayer, setSearchPlayer] = useState<string>("");
   const [players, setPlayers] = useState<Player[]>([]);
 
@@ -44,24 +56,41 @@ export function CreateTeam() {
     LoadPlayers();
   }, [searchPlayer]);
 
+  useEffect(() => {
+    const searchTeamById = async function () {
+      if (location.state) {
+        const { data } = await api.get(`/teams/${location.state}`);
+        const editTeam: TeamProps = data.team;
+        initialValues = {
+          name: editTeam.name,
+          description: editTeam.description,
+          website: editTeam.website,
+          teamType: editTeam.teamType,
+        };
+      }
+    };
+
+    searchTeamById();
+  }, [location.state]);
+
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      description: "",
-      website: "",
-    },
+    initialValues,
     onSubmit: async (values) => {
       try {
-        await api.post("teams", values);
+        if (location.state) await api.patch(`teams/${location.state}`,values);
+        else await api.post("teams", values);
+
         history.push("/");
       } catch (error) {
         console.log("error when adding a team");
       }
     },
+    enableReinitialize: true,
     validate: (values) => {
       let errors: formProps = {} as formProps;
 
       if (!values.name) errors.name = "Name Required";
+      if (!values.teamType) errors.teamType = "Type Required";
       if (!values.website) {
         errors.website = "Website Required";
       } else if (!isValidURL(values.website)) {
@@ -135,14 +164,33 @@ export function CreateTeam() {
 
                   <div className="radio-buttons">
                     <div>
-                      <input type="radio" name="type" id="fantasy" />
+                      <input
+                        type="radio"
+                        name="teamType"
+                        id="fantasy"
+                        value="fantasy"
+                        onChange={formik.handleChange}
+                        defaultChecked={formik.values.teamType === "fantasy"}
+                      />
                       <label htmlFor="fantasy">Fantasy</label>
                     </div>
                     <div>
-                      <input type="radio" name="type" id="real" />
+                      <input
+                        type="radio"
+                        name="teamType"
+                        id="real"
+                        value="real"
+                        onChange={formik.handleChange}
+                        defaultChecked={formik.values.teamType === "real"}
+                      />
                       <label htmlFor="real">Real</label>
                     </div>
                   </div>
+                  {formik.errors.teamType ? (
+                    <div className="validate-input">
+                      {formik.errors.teamType}
+                    </div>
+                  ) : null}
                 </ContainerInputs>
 
                 <ContainerInputs>

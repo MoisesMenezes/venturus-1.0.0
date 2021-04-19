@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 import { TeamProps } from "../../types";
+import { useHistory } from "react-router-dom";
 
 export function TableTeam() {
+  let history = useHistory();
   const [teams, setTeams] = useState<TeamProps[]>([]);
   const [sortAsc, setSortAsc] = useState("asc");
 
@@ -58,6 +60,10 @@ export function TableTeam() {
     }
   };
 
+  const handleEdit = (id: number) => {
+    history.push("/teamcreate",id);
+  }
+
   return (
     <Container>
       <table>
@@ -80,7 +86,7 @@ export function TableTeam() {
               <td>
                 <MdDelete onClick={() => handleDeleteTeam(team.id)} />
                 <MdShare />
-                <MdEdit />
+                <MdEdit onClick={() => handleEdit(team.id)} />
               </td>
             </tr>
           ))}

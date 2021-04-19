@@ -3,7 +3,7 @@ export interface TeamProps {
   name: string;
   description: string;
   website: string;
-  type: string;
+  teamType: string;
   tags: string[];
   players: PlayerProps[];
 }

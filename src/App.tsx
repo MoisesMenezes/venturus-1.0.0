@@ -19,7 +19,7 @@ createServer({
           name: "Real Madri",
           description: "Club Spanish, won 13 times the Champions League",
           website: "https://www.realmadrid.com/",
-          type: "real",
+          teamType: "real",
           tags: ["Champion", "PTW"],
           players: playerData.playersRealMadrid
         },
@@ -27,8 +27,8 @@ createServer({
           id: 2,
           name: "Barcelona",
           description: "Club Spanish, won 5 times the Champions League",
-          website: "https:teste.com",
-          type: "real",
+          website: "https://www.fcbarcelona.com/",
+          teamType: "real",
           tags: ["BR", "PTW"],
           players: playerData.playersBarcelona
         },
@@ -48,10 +48,23 @@ createServer({
       return schema.create("teams", data);
     });
 
+    this.patch("/teams/:id", (schema,request) => {
+      let newAttrs = JSON.parse(request.requestBody);
+      let team = schema.find("teams", request.params.id);
+
+      team?.update(newAttrs);
+      return schema.all("teams");
+    })
+
+    this.get("/teams/:id", (schema,request) => {
+      let team = schema.find("teams", request.params.id);
+      return {team}
+    })
+
     this.del("/teams/:id", (schema, request) => {
-      let post = schema.find("teams", request.params.id);
-      post?.destroy();
-      console.log("POST", post)
+      let team = schema.find("teams", request.params.id);
+      team?.destroy();
+
       return schema.all("teams");
     });
 
