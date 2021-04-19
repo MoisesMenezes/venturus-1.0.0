@@ -19,25 +19,21 @@ import { useEffect, useState } from "react";
 import { Player } from "../../services/apiFootbal";
 import { v4 } from "uuid";
 
-
 interface formProps {
   name: string;
   description: string;
   website: string;
 }
 
-
 export function CreateTeam() {
   let history = useHistory();
   const [searchPlayer, setSearchPlayer] = useState<string>("");
-  const [players, setPlayers ] = useState<Player[]>([]);
-
+  const [players, setPlayers] = useState<Player[]>([]);
 
   useEffect(() => {
-
-    async function LoadPlayers(){
-      if(searchPlayer.length > 3) {
-        const playersFound =  await getPlayers(searchPlayer);
+    async function LoadPlayers() {
+      if (searchPlayer.length > 3) {
+        const playersFound = await getPlayers(searchPlayer);
 
         setPlayers([]);
         setPlayers(playersFound);
@@ -46,15 +42,7 @@ export function CreateTeam() {
       }
     }
     LoadPlayers();
-  },[searchPlayer])
-
-
-  const teste = async () => {
-
-    const teste = await getPlayers("cristiano");
-
-    console.log("AAAAAAA",teste)
-  }
+  }, [searchPlayer]);
 
   const formik = useFormik({
     initialValues: {
@@ -83,7 +71,6 @@ export function CreateTeam() {
       return errors;
     },
   });
-
 
   return (
     <>
@@ -190,12 +177,23 @@ export function CreateTeam() {
               <div>
                 <ContainerInputs>
                   <label htmlFor="search-player">Search Players</label>
-                  <input type="text" name="search-player" value={searchPlayer} onChange={(event) => setSearchPlayer(event.currentTarget.value)}/>
+                  <input
+                    type="text"
+                    name="search-player"
+                    value={searchPlayer}
+                    onChange={(event) =>
+                      setSearchPlayer(event.currentTarget.value)
+                    }
+                  />
                 </ContainerInputs>
                 {players.map((player) => (
-                  <PlayerCard key={`${player.name}-${v4()}`} age={player.age} nacionality={player.nacionality} name={player.name}/>
-                )
-                )}
+                  <PlayerCard
+                    key={`${player.name}-${v4()}`}
+                    age={player.age}
+                    nacionality={player.nacionality}
+                    name={player.name}
+                  />
+                ))}
               </div>
             </ContainerTeam>
           </Form>

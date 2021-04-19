@@ -5,14 +5,7 @@ import { FaSort } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
-interface TeamProps {
-  id: number;
-  name: string;
-  description: string;
-  website: string;
-  type: string;
-  tags: string[];
-}
+import { TeamProps } from "../../types";
 
 export function TableTeam() {
   const [teams, setTeams] = useState<TeamProps[]>([]);
@@ -21,6 +14,12 @@ export function TableTeam() {
   useEffect(() => {
     api.get("teams").then((response) => setTeams(response.data.teams));
   }, []);
+
+  const handleDeleteTeam = (id: number) => {
+    api.delete(`teams/${id}`).then((response) => {
+      setTeams([...response.data.teams]);
+    });
+  };
 
   const sortBy = (key: any) => {
     switch (key) {
@@ -79,7 +78,7 @@ export function TableTeam() {
               <td>{team.name}</td>
               <td>{team.description}</td>
               <td>
-                <MdDelete />
+                <MdDelete onClick={() => handleDeleteTeam(team.id)} />
                 <MdShare />
                 <MdEdit />
               </td>

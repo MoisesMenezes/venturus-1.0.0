@@ -16,10 +16,3 @@ export const Header = styled.header`
     color: var(--purple-900);
   }
 `;
-
-export const ContainerAverage = styled.div`
-  padding: 1.5rem 1rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 15px;
-`;

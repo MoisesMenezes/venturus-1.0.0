@@ -1,0 +1,126 @@
+{
+  "playersBarcelona": [
+  {
+    "id": 1,
+    "name": "Marc-André ter Stegen",
+    "age": 28
+  },
+  {
+    "id":  2,
+    "name": "Gerard Piqué",
+    "age": 34
+  },
+  {
+    "id":  3,
+    "name": "Jordi Alba",
+    "age": 32
+  },
+  {
+    "id":  4,
+    "name": "Lionel Messi",
+    "age": 33
+  },
+  {
+    "id":  5,
+    "name": "Ousmane Dembêle",
+    "age": 23
+  },
+  {
+    "id":  6,
+    "name": "Philippe Coutinho",
+    "age": 28
+  },
+  {
+    "id":  7,
+    "name": "Antoine Griezmann",
+    "age": 30
+  },
+  {
+    "id":  8,
+    "name": "Sergio Busquets",
+    "age": 32
+  },
+  {
+    "id":  9,
+    "name": "Santiago Ramos",
+    "age": 19
+  },
+  {
+    "id":  10,
+    "name": "Miralem Pjanic",
+    "age": 31
+  },
+  {
+    "id": 11,
+    "name": "Sergi Roberto",
+    "age": 29
+  },
+  {
+    "id":  12,
+    "name": "Sergiño Dest",
+    "age": 20
+  }
+  ],
+  "playersRealMadrid": [
+    {
+      "id": 1,
+      "name": "Thibaut Courtois",
+      "age": 28
+    },
+    {
+      "id":  2,
+      "name": "Pablo Ramon",
+      "age": 19
+    },
+    {
+      "id":  3,
+      "name": "Sergio Ramos",
+      "age": 35
+    },
+    {
+      "id":  4,
+      "name": "Raphaël Varane",
+      "age": 27
+    },
+    {
+      "id":  5,
+      "name": "Marcelo",
+      "age": 32
+    },
+    {
+      "id":  6,
+      "name": "Toni Kroos",
+      "age": 31
+    },
+    {
+      "id":  7,
+      "name": "Luka Modric",
+      "age": 10
+    },
+    {
+      "id":  8,
+      "name": "Casemiro",
+      "age": 29
+    },
+    {
+      "id":  9,
+      "name": "Isco",
+      "age": 28
+    },
+    {
+      "id":  10,
+      "name": "Eden Hazard",
+      "age": 30
+    },
+    {
+      "id": 11,
+      "name": "Karim Benzema",
+      "age": 33
+    },
+    {
+      "id":  12,
+      "name": "Vinícius Júnior",
+      "age": 20
+    }
+  ]
+}

@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  padding: 1.5rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+
 h4 {
     margin-bottom:10px; 
   }
 `;
-
 
 export const Content = styled.div`
   background: var(--background);
