@@ -11,7 +11,7 @@ export interface Player {
   age: number;
 }
 
-const API_KEY = "7deb7e67d8msh3b7b000e612da16p1e16fcjsn1a08ac9c4e08";
+const API_KEY = "";
 
 const getPlayers = async (name: string): Promise<Player[]> => {
 

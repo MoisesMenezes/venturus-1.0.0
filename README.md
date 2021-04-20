@@ -1,15 +1,17 @@
+<h1 align=center>Squad Management Team  Venturus</h1>
+
 ## :computer: About
 
 The application is part of the test for junior front-end developer from Venturus.
 
 ## :construction_worker: My steps
 
-The first step I configured the application with Typescript, after that with the layout I defined the variables for colors and the global style.
-In the second step, I implement the design.
-In the third step I configured the MirageJs to used real data instead of static data, com Miraje js I implemented the routes with API Fake to simulate the backend, implementing the create, edit and delete for the team.
-in the four step, I studied the APISoccer to how to receive soccer players, with all players I implemented the search button to search soccer players by name.
-The final step, I implemented the average for age by teams, and some simple tests.
-The deadline is over and I haven't been able to complete all the steps
+- The first step I configured the application with Typescript, after that with the layout I defined the variables for colors and the global style.
+- In the second step, I implement the design.
+- In the third step I configured the MirageJs to used real data instead of static data, com Miraje js I implemented the routes with API Fake to simulate the backend, implementing the create, edit and delete for the team.
+- in the four step, I studied the APISoccer to how to receive soccer players, with all players I implemented the search button to search soccer players by name.
+- The final step, I implemented the average for age by teams, and some simple tests.
+  The deadline is over and I haven't been able to complete all the steps
 
 ### Phase 1
 
