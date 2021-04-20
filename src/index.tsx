@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { makeServer } from "./server";
+
+
+makeServer({ environment: "development" })
 
 ReactDOM.render(
   <React.StrictMode>

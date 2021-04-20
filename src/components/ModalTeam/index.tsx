@@ -9,7 +9,7 @@ export function ModalTeam(){
       <Header>
       <h2>My Teams</h2>
       <button>
-        <Link to="/teamcreate">
+        <Link to="/teamcreate" data-testid="link-navigate">
           <MdAdd size={28} color="#fff" />
         </Link>
       </button>

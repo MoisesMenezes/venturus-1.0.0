@@ -11,13 +11,15 @@ export interface Player {
   age: number;
 }
 
+const API_KEY = "7deb7e67d8msh3b7b000e612da16p1e16fcjsn1a08ac9c4e08";
+
 const getPlayers = async (name: string): Promise<Player[]> => {
 
   const options: any = {
     method: "GET",
     url: `https://api-football-v1.p.rapidapi.com/v2/players/search/${name}`,
     headers: {
-      "x-rapidapi-key": "7deb7e67d8msh3b7b000e612da16p1e16fcjsn1a08ac9c4e08",
+      "x-rapidapi-key": API_KEY,
       "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
     },
   };

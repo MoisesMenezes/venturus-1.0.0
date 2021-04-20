@@ -123,6 +123,7 @@ export function CreateTeam() {
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.name}
+                    placeholder="insert team name"
                   ></input>
                   {formik.touched.name && formik.errors.name ? (
                     <div className="validate-input">{formik.errors.name}</div>
@@ -148,6 +149,7 @@ export function CreateTeam() {
                     type="text"
                     name="website"
                     id="website"
+                    placeholder="http://myteam.com"
                     onChange={formik.handleChange}
                     value={formik.values.website}
                     onBlur={formik.handleBlur}
